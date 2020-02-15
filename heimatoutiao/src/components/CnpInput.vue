@@ -39,6 +39,7 @@ export default {
     padding: 10px 0;
     font-size: 18/360 * 100vw;
     margin-top: 10px;
+    background-color: #f2f2f2;
   }
   .error{
     border-bottom:1px solid red;

@@ -17,6 +17,10 @@ export default {
    padding: 0;
    margin: 0;
    outline: none;
+   vertical-align: middle;
+ }
+ body{
+   background-color: #f2f2f2;
  }
  a{
    text-decoration: none;

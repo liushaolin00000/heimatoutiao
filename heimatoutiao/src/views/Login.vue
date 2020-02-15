@@ -8,18 +8,22 @@
     <!-- <br /> -->
     <!-- <input type="text" placeholder="密码" />
     <br />-->
-    <CnpInput placeholder="用户名/手机号码" @inputs="hanleInputsun" :rule="/^1[0-9]{4,11}$/" errms='手机格式错误,位数为4至11位数'></CnpInput>
-    <CnpInput placeholder="密码" @inputs="hanleInputspw" 
-    :rule="/^1[0-9]{2}$/" 
-    errms='密码格式错误，位数为3位数'></CnpInput>
+    <CnpInput
+      placeholder="用户名/手机号码"
+      @inputs="hanleInputsun"
+      :rule="/^1[0-9]{4,11}$/"
+      errms="手机格式错误,位数为4至11位数"
+    ></CnpInput>
+    <CnpInput placeholder="密码" @inputs="hanleInputspw" :rule="/^1[0-9]{2}$/" errms="密码格式错误，位数为3位数"></CnpInput>
     <a href="/register">还没有账号？点击去注册个账号吧</a>
     <div class="btn" @click="handleLoginBtn">登录</div>
   </div>
 </template>
 
 <script >
+// import axios from "axios";
 import CnpInput from "@/components/CnpInput";
-const login = require('@/network/login.js')
+import { login } from "@/network/login.js";
 export default {
   data() {
     return {
@@ -34,9 +38,14 @@ export default {
   },
   methods: {
     handleLoginBtn() {
-      login.login(this.form).then(res=>{
-      
-      })
+      login(this.form).then(res => {
+        console.log(res)
+        if (res.data.message == "登录成功") {
+          localStorage.setItem('token',res.data.data.token)
+          localStorage.setItem('userId',res.data.data.user.id)
+          this.$router.push("/personal");
+        }
+      });
     },
     hanleInputsun(e) {
       this.form.username = e;
@@ -74,7 +83,7 @@ export default {
     margin-top: 80px;
     border-radius: 30px;
   }
-  a{
+  a {
     float: right;
   }
 }

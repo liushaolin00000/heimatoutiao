@@ -16,7 +16,7 @@
     :rule="/^[a-zA-Z0-9_]{3,16}$/" 
     errms='昵称格式错误，最少4位数,不包含中文'></CnpInput>
     <a href="/login">已经注册账号了？点击去登录</a>
-    <div class="btn" @click="handleLoginBtn">登录</div>
+    <div class="btn" @click="handleLoginBtn">注册</div>
   </div>
 </template>
 
@@ -39,7 +39,11 @@ export default {
   methods: {
     handleLoginBtn() {
       register.register(this.form).then(res=>{
-        console.log(res)
+        // console.log(res.data.message)
+        if(res.data.message === "注册成功"){
+          // console.log(123)
+          this.$router.push('/login')
+        }
       })
     },
     hanleInputsun(e) {
