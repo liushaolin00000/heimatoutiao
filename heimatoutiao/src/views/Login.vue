@@ -14,7 +14,7 @@
       :rule="/^1[0-9]{4,11}$/"
       errms="手机格式错误,位数为4至11位数"
     ></CnpInput>
-    <CnpInput placeholder="密码" @inputs="hanleInputspw" :rule="/^1[0-9]{2}$/" errms="密码格式错误，位数为3位数"></CnpInput>
+    <CnpInput placeholder="密码" @inputs="hanleInputspw" :rule="/^1[0-9]{2,10}$/" errms="密码格式错误，位数最少为3位数"></CnpInput>
     <a href="/register">还没有账号？点击去注册个账号吧</a>
     <div class="btn" @click="handleLoginBtn">登录</div>
   </div>

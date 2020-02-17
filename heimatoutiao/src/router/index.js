@@ -10,6 +10,18 @@ const Register = function(){
 const Personal = function(){
   return import('@/views/Personal.vue')
 }
+const EditData = function(){
+  return import('@/views/EditData.vue')
+}
+const myFocus = function(){
+  return import('@/views/personal/myFocus.vue')
+}
+const myComments = function(){
+  return import('@/views/personal/myComments.vue')
+}
+const myFavorite = function(){
+  return import('@/views/personal/myFavorite.vue')
+}
 Vue.use(Router)
 
  const router = new Router({
@@ -25,15 +37,32 @@ Vue.use(Router)
     {
       path:"/personal",
       component:Personal
-    }
+    },
+    {
+      path:"/editData",
+      component:EditData
+    },
+    {
+      path:"/myFocus",
+      component:myFocus
+    },
+    {
+      path:"/myComments",
+      component:myComments
+    },
+    {
+      path:"/myFavorite",
+      component:myFavorite
+    },
+    
   ],
   mode:'history'
 })
 router.beforeEach((to,from,next)=>{
   const hasToken = localStorage.getItem("token")
-  console.log(to.path)
-  if(to.path === "/personal"){
-    console.log(123)
+  // console.log(to.path)
+  if(to.path === "/personal"||to.path === "/editData"){
+    // console.log(123)
     if(hasToken){
       
       next()

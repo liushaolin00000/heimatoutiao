@@ -8,7 +8,7 @@ export function request(config) {
   })
   //axios响应拦截器
   intance.interceptors.response.use(res=>{
-    console.log(res)
+    // console.log(res)
       if(res.data.statusCode===401){
         Toast.fail(res.data.message);
         router.push('/login')
